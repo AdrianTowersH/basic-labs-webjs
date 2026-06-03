@@ -1,0 +1,107 @@
+:root {
+  --primary-color: #3498db;
+  --base-padding: 1rem;
+  --main-font: 'Helvetica', sans-serif;
+}
+
+body{
+    background-color: lightgray;
+    font-family: Arial, Helvetica, sans-serif;
+
+}
+
+#container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.article{
+    background-color:var(--primary-color);
+    padding: 20px;
+    margin: 20px;
+    width: 80%;
+}
+
+/*
+
+
+
+In CSS, the difference between # and . comes down to how many elements you want to target on a page. 
+They are both selectors, but they have completely different use cases and "weights."
+
+Here is the quick breakdown:
+
+# is an ID selector: Used to target one unique element on a page.
+
+. is a Class selector: Used to target multiple elements that share the same styling.
+
+
+
+
+Use a CSS Reset or Normalize
+
+Different browsers (Chrome, Safari, Firefox, Edge) have different default styles for margins, paddings, and headings.
+A "Reset" strips these away so you start with a completely blank canvas.
+At the very least, always include the box-sizing: border-box hack at the top of your stylesheet:
+
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+
+5. Use Relative Units (rem and em) for Typography
+
+Avoid using absolute pixels (px) for font sizes. If a user changes their browser's default font size for accessibility reasons, px fonts will stay frozen, breaking usability.
+
+rem (Root Em): Relative to the root (<html>) element font size (usually 16px by default). 1rem = 16px, 2rem = 32px. Use this for font sizes, margins, and padding.
+
+em: Relative to the parent element's font size. Great for things that should scale dynamically with the text, like padding inside a button.
+
+
+
+
+Adopt a Naming Convention (Like BEM)
+
+When your CSS files grow to thousands of lines, naming things gets chaotic. BEM (Block, Element, Modifier) is a popular naming convention that makes your HTML and CSS self-documenting.
+
+Block: The standalone component (e.g., .card)
+
+Element: A part of the block that cannot live outside it (e.g., .card__title)
+
+Modifier: A variation of a block or element (e.g., .card--featured)
+
+
+Why not just use card--featured alone?
+
+If you only wrote <div class="card--featured">, that element would lose all the base styles (the padding, the shadow, the rounded corners) defined in .card.
+
+To fix that without using both classes, you would have to copy and paste all the base styles into your .card--featured CSS block.
+ Copy-pasting code like that is a big red flag in web development because if you decide to change the card padding later, you now have to remember to change it in multiple places.
+
+<div class="card card--featured">
+  <h2 class="card__title">Hello World</h2>
+  <button class="card__button">Read More</button>
+</div>
+
+
+It is one of the absolute best tools in modern CSS because it lets you do math directly inside your stylesheet.
+
+The coolest thing about calc() is that it allows you to mix different types of units—like subtracting absolute pixels (px) from a relative percentage (%).
+
+/* ❌ THIS WILL FAIL (The browser will think -50px is a negative number) 
+width: calc(100%-50px);
+
+  THIS WORKS 
+width: calc(100% - 50px);
+
+
+Pro-Tip: Modern web developers actually lean heavily on classes (.) for almost all of their styling. 
+Because IDs have such high specificity,  they can make your CSS hard to override later if you want to make changes.
+ Many developers save IDs strictly for JavaScript functionality or internal page links (anchors).
+
+ */
